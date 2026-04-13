@@ -1,2 +1,62 @@
-.vercel
+# Dependencies
 node_modules/
+
+# Production builds
+.next/
+dist/
+build/
+
+# Environment variables
+.env*
+!.env.example
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Next.js specific
+out/
+.next/cache/
+
+# Temporary files
+tmp/
+temp/
+
+# Large binaries that shouldn't be committed
+*.node
+*.tgz
+*.zip
+*.tar
+*.gz
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build outputs
+public/build/
+static/build/
+
+# Large dependency files
+node_modules/**/node_modules/
+**/node_modules/@next/swc-*/**/*
