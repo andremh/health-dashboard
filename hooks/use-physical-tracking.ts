@@ -1,32 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import { RunningActivity } from '@/types/activities';
 
-interface PhysicalTrackingData {
-  lastWorkout: RunningActivity | null;
-  thisWeekWorkouts: number;
-  runningDistance: number;
-  gymSessions: number;
+interface PhysicalTrackingResponse {
+  steps: number;
+  calories: number;
+  distance: number;
+  activeMinutes: number;
+  date: string;
+  source: string;
 }
 
-async function fetchPhysicalTracking(): Promise<PhysicalTrackingData> {
-  // Simulate API call - replace with actual API endpoint
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        lastWorkout: {
-          id: '1',
-          date: new Date().toISOString(),
-          activityType: 'Running',
-          duration: 45,
-          distance: 8.5,
-          calories: 620,
-        },
-        thisWeekWorkouts: 5,
-        runningDistance: 32.5,
-        gymSessions: 3,
-      });
-    }, 500);
-  });
+async function fetchPhysicalTracking(): Promise<PhysicalTrackingResponse> {
+  // Chamada para a API real integrada com OpenClaw
+  const response = await fetch('/api/integration/activity');
+  if (!response.ok) {
+    throw new Error('Failed to fetch physical tracking data');
+  }
+  return await response.json();
 }
 
 export function usePhysicalTracking() {
@@ -34,5 +24,6 @@ export function usePhysicalTracking() {
     queryKey: ['physicalTracking'],
     queryFn: fetchPhysicalTracking,
     staleTime: 5 * 60 * 1000, // 5 minutes
+    retry: 1,
   });
 }

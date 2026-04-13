@@ -1,7 +1,6 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { RunningActivity } from '@/types/activities';
 import { usePhysicalTracking } from '@/hooks/use-physical-tracking';
 import { Activity, TrendingUp, Calendar } from 'lucide-react';
 
@@ -56,19 +55,19 @@ export function PhysicalTrackingCard() {
               <div className="bg-muted/50 rounded-lg p-3">
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-4 w-4 text-green-500" />
-                  <span className="text-sm font-medium">Running</span>
+                  <span className="text-sm font-medium">Steps</span>
                 </div>
-                <p className="text-2xl font-bold">{data.runningDistance || 0} km</p>
-                <p className="text-xs text-muted-foreground">this week</p>
+                <p className="text-2xl font-bold">{data.steps?.toLocaleString() || 0}</p>
+                <p className="text-xs text-muted-foreground">today</p>
               </div>
               
               <div className="bg-muted/50 rounded-lg p-3">
                 <div className="flex items-center gap-2">
                   <DumbbellIcon className="h-4 w-4 text-blue-500" />
-                  <span className="text-sm font-medium">Gym</span>
+                  <span className="text-sm font-medium">Calories</span>
                 </div>
-                <p className="text-2xl font-bold">{data.gymSessions || 0}</p>
-                <p className="text-xs text-muted-foreground">sessions</p>
+                <p className="text-2xl font-bold">{data.calories || 0}</p>
+                <p className="text-xs text-muted-foreground">burned</p>
               </div>
             </div>
           </div>

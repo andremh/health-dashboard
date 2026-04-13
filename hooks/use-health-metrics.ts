@@ -1,31 +1,32 @@
 import { useQuery } from '@tanstack/react-query';
-import { HealthMetric } from '@/types/health';
 
-interface HealthMetricsData {
+interface HealthMetricsResponse {
   heartRate: number;
   temperature: number;
   hydration: number;
   sleepHours: number;
+  steps: number;
+  calories: number;
+  date: string;
+  source: string;
 }
 
-async function fetchHealthMetrics(): Promise<HealthMetricsData> {
-  // Simulate API call - replace with actual API endpoint
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        heartRate: 62,
-        temperature: 36.7,
-        hydration: 85,
-        sleepHours: 7.2,
-      });
-    }, 500);
-  });
+async function fetchHealthMetrics(): Promise<HealthMetricsResponse> {
+  // Chamada para a API real integrada com OpenClaw
+  const response = await fetch('/api/integration/health');
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error('API Error:', errorData);
+    throw new Error(errorData.error || 'Failed to fetch health metrics');
+  }
+  return await response.json();
 }
 
 export function useHealthMetrics() {
   return useQuery({
     queryKey: ['healthMetrics'],
     queryFn: fetchHealthMetrics,
-    staleTime: 1 * 60 * 1000, // 1 minute (more frequent updates for health data)
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    retry: 1,
   });
 }
