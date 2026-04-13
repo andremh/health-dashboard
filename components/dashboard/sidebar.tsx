@@ -3,15 +3,21 @@
 import Link from 'next/link';
 import { Activity, BarChart3, HeartPulse, Brain, Dumbbell, Coffee, Calendar, Settings } from 'lucide-react';
 
-const navItems = [
-  { icon: BarChart3, label: 'Overview', href: '/' as const },
-  { icon: Activity, label: 'Physical', href: '/physical' as const },
-  { icon: HeartPulse, label: 'Health', href: '/health' as const },
-  { icon: Brain, label: 'Mindset', href: '/mindset' as const },
-  { icon: Dumbbell, label: 'Training', href: '/training' as const },
-  { icon: Coffee, label: 'Bio-Fuel', href: '/biofuel' as const },
-  { icon: Calendar, label: 'Deep Work', href: '/deep-work' as const },
-  { icon: Settings, label: 'Settings', href: '/settings' as const },
+interface NavItem {
+  icon: React.ElementType;
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { icon: BarChart3, label: 'Overview', href: '/' },
+  { icon: Activity, label: 'Physical', href: '/physical' },
+  { icon: HeartPulse, label: 'Health', href: '/health' },
+  { icon: Brain, label: 'Mindset', href: '/mindset' },
+  { icon: Dumbbell, label: 'Training', href: '/training' },
+  { icon: Coffee, label: 'Bio-Fuel', href: '/biofuel' },
+  { icon: Calendar, label: 'Deep Work', href: '/deep-work' },
+  { icon: Settings, label: 'Settings', href: '/settings' },
 ];
 
 export function DashboardSidebar() {
