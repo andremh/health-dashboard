@@ -7,7 +7,7 @@ import { ErrorHandlingProvider } from "@/providers/error-handler-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bio-OS Dashboard",
+  title: "Health Dashboard",
   description: "Personal Performance Dashboard - André Moura Henriques",
 };
 

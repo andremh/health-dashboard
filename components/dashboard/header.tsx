@@ -12,7 +12,7 @@ export function DashboardHeader({ isLoading, onRefresh }: DashboardHeaderProps) 
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-6">
       <div className="flex-1">
-        <h1 className="text-xl font-semibold">Bio-OS Dashboard</h1>
+        <h1 className="text-xl font-semibold">Health Dashboard</h1>
         <p className="text-sm text-muted-foreground">
           André Moura Henriques - Personal Performance Metrics
         </p>

@@ -1,11 +1,11 @@
-# Bio-OS Dashboard
+# Health Dashboard
 
-Personal Performance Dashboard for André Moura Henriques - A comprehensive system that acts as an extension of mind and routine, focused on data, rationality, and high performance.
+Personal Health Dashboard for André Moura Henriques - A comprehensive system that monitors health metrics, supplements, and wellness data.
 
 ## Features
 
 - **Physical Tracking**: Visualize running and gym workouts with weekly volume dashboards
-- **Bio-Fuel**: Track supplement intake (30g Protein, 3g Creatina) with visual indicators
+- **Supplement Tracking**: Track supplement intake (30g Protein, 3g Creatina) with visual indicators
 - **Deep Work**: Monitor focus time vs recovery time with productivity scores
 - **Mindset Logic**: Space for factual insights and emotional control monitoring
 - **Health Metrics**: Real-time health indicators (HR, temperature, hydration, sleep)

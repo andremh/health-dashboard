@@ -18,7 +18,7 @@ export function DashboardSidebar() {
   return (
     <aside className="hidden w-64 flex-col border-r bg-background md:flex">
       <div className="flex h-16 items-center border-b px-6">
-        <h2 className="text-lg font-semibold">Bio-OS</h2>
+        <h2 className="text-lg font-semibold">Health</h2>
       </div>
       <nav className="flex-1 px-4 py-6">
         <ul className="space-y-2">
