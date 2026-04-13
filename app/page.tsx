@@ -3,10 +3,11 @@
 import { DashboardHeader } from '@/components/dashboard/header';
 import { DashboardGrid } from '@/components/dashboard/grid';
 import { DashboardSidebar } from '@/components/dashboard/sidebar';
-import { useGlobalRefresh } from '@/hooks/use-global-refresh';
+import { useGlobalRefreshEnhanced } from '@/hooks/use-global-refresh-enhanced';
+import { ToastNotifications } from '@/components/ui/toast-notifications';
 
 export default function DashboardPage() {
-  const { isLoading, handleRefresh } = useGlobalRefresh();
+  const { isLoading, handleRefresh } = useGlobalRefreshEnhanced();
 
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
@@ -18,6 +19,7 @@ export default function DashboardPage() {
         />
         <DashboardGrid />
       </main>
+      <ToastNotifications />
     </div>
   );
 }
