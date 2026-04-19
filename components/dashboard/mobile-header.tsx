@@ -13,6 +13,15 @@ interface MobileHeaderProps {
 
 export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detectar se está em mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Notificar o componente pai sobre mudança de estado do menu
   useEffect(() => {
@@ -20,6 +29,10 @@ export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeade
       onMenuToggle(isMenuOpen);
     }
   }, [isMenuOpen, onMenuToggle]);
+
+  if (!isMobile) {
+    return null;
+  }
 
   return (
     <>
@@ -30,7 +43,7 @@ export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeade
             variant="ghost"
             size="icon"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden h-9 w-9"
+            className="h-9 w-9"
           >
             {isMenuOpen ? (
               <X className="h-4 w-4" />
@@ -54,17 +67,11 @@ export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeade
         </Button>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu - pushes content instead of overlay */}
       {isMenuOpen && (
-        <>
-          <div
-            className="fixed inset-0 z-30 bg-black/50 md:hidden"
-            onClick={() => setIsMenuOpen(false)}
-          />
-          <div className="fixed left-0 top-0 z-40 h-full w-56 bg-background shadow-lg md:hidden">
-            <DashboardSidebar onClose={() => setIsMenuOpen(false)} />
-          </div>
-        </>
+        <div className="md:hidden">
+          <DashboardSidebar onClose={() => setIsMenuOpen(false)} />
+        </div>
       )}
     </>
   );

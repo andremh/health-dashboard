@@ -24,11 +24,12 @@ const navItems: NavItem[] = [
 
 interface DashboardSidebarProps {
   onClose?: () => void;
+  isMobile?: boolean;
 }
 
-export function DashboardSidebar({ onClose }: DashboardSidebarProps) {
+export function DashboardSidebar({ onClose, isMobile = false }: DashboardSidebarProps) {
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 w-56 flex-col border-r bg-background md:relative md:flex md:z-0 md:shadow-none">
+    <aside className={`fixed inset-y-0 left-0 z-50 w-56 flex-col border-r bg-background shadow-lg transition-transform duration-300 md:relative md:shadow-none ${isMobile ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
       <div className="flex h-16 items-center border-b px-6">
         <h2 className="text-lg font-semibold flex items-center">
           Health

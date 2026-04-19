@@ -19,8 +19,8 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
-      <DashboardSidebar />
-      <main className={`flex-1 overflow-auto transition-all duration-300 ${isMobileMenuOpen ? 'opacity-50' : 'opacity-100'}`}>
+      <DashboardSidebar isMobile={isMobileMenuOpen} />
+      <main className={`flex-1 overflow-auto md:pl-56 transition-all duration-300 ${isMobileMenuOpen ? 'pl-56' : ''}`}>
         {/* Desktop Header */}
         <div className="hidden md:block">
           <DashboardHeader 
