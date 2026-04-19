@@ -67,10 +67,13 @@ export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeade
         </Button>
       </header>
 
-      {/* Mobile Menu - pushes content instead of overlay */}
+      {/* Mobile Menu - overlay */}
       {isMenuOpen && (
-        <div className="md:hidden">
-          <DashboardSidebar onClose={() => setIsMenuOpen(false)} />
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="fixed inset-0 bg-black/50" onClick={() => setIsMenuOpen(false)} />
+          <div className="fixed inset-y-0 left-0 z-50">
+            <DashboardSidebar onClose={() => setIsMenuOpen(false)} isMobile={true} />
+          </div>
         </div>
       )}
     </>

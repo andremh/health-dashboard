@@ -29,7 +29,7 @@ interface DashboardSidebarProps {
 
 export function DashboardSidebar({ onClose, isMobile = false }: DashboardSidebarProps) {
   return (
-    <aside className={`fixed inset-y-0 left-0 z-50 w-56 flex-col border-r bg-background shadow-lg transition-transform duration-300 md:relative md:shadow-none ${isMobile ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+    <aside className={`fixed inset-y-0 left-0 z-40 w-56 flex-col border-r bg-background shadow-lg transition-transform duration-300 md:relative md:z-auto md:shadow-none ${isMobile ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
       <div className="flex h-16 items-center border-b px-6">
         <h2 className="text-lg font-semibold flex items-center">
           Health
