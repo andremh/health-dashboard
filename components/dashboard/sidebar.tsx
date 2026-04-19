@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import type { UrlObject } from 'url';
-import { Activity, BarChart3, HeartPulse, Brain, Dumbbell, Coffee, Calendar, Settings } from 'lucide-react';
+import { Activity, BarChart3, HeartPulse, Brain, Dumbbell, Coffee, Calendar, Settings, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface NavItem {
   icon: React.ElementType;
@@ -27,9 +28,21 @@ interface DashboardSidebarProps {
 
 export function DashboardSidebar({ onClose }: DashboardSidebarProps) {
   return (
-    <aside className="hidden w-64 flex-col border-r bg-background md:flex">
+    <aside className="fixed inset-y-0 left-0 z-40 w-56 flex-col border-r bg-background md:relative md:flex md:z-0 md:shadow-none">
       <div className="flex h-16 items-center border-b px-6">
-        <h2 className="text-lg font-semibold">Health</h2>
+        <h2 className="text-lg font-semibold flex items-center">
+          Health
+          {onClose && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onClose}
+              className="ml-auto md:hidden"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          )}
+        </h2>
       </div>
       <nav className="flex-1 px-4 py-6">
         <ul className="space-y-2">
@@ -37,7 +50,11 @@ export function DashboardSidebar({ onClose }: DashboardSidebarProps) {
             <li key={item.label}>
               <Link
                 href={item.href as unknown as UrlObject}
-                onClick={onClose}
+                onClick={() => {
+                  if (onClose) {
+                    onClose();
+                  }
+                }}
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-colors hover:text-foreground"
               >
                 <item.icon className="h-5 w-5" />

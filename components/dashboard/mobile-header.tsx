@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { RefreshCw, Menu, X } from 'lucide-react';
 import { DashboardSidebar } from './sidebar';
@@ -8,10 +8,18 @@ import { DashboardSidebar } from './sidebar';
 interface MobileHeaderProps {
   isLoading: boolean;
   onRefresh: () => void;
+  onMenuToggle?: (isOpen: boolean) => void;
 }
 
-export function MobileHeader({ isLoading, onRefresh }: MobileHeaderProps) {
+export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Notificar o componente pai sobre mudança de estado do menu
+  useEffect(() => {
+    if (onMenuToggle) {
+      onMenuToggle(isMenuOpen);
+    }
+  }, [isMenuOpen, onMenuToggle]);
 
   return (
     <>
