@@ -39,35 +39,35 @@ export function PhysicalTrackingCard() {
             <p>Loading...</p>
           </div>
         ) : data ? (
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <div>
-                <p className="text-sm font-medium">Last Workout</p>
-                <p className="text-lg font-semibold">{data.lastWorkout?.activityType || 'Rest'}</p>
+              <div className="min-w-0">
+                <p className="text-xs font-medium truncate">Last Workout</p>
+                <p className="text-base font-semibold truncate">{data.lastWorkout?.activityType || 'Rest'}</p>
               </div>
-              <div className="text-right">
-                <p className="text-sm font-medium">This Week</p>
-                <p className="text-lg font-semibold">{data.thisWeekWorkouts} workouts</p>
+              <div className="text-right ml-2">
+                <p className="text-xs font-medium">This Week</p>
+                <p className="text-base font-semibold">{data.thisWeekWorkouts}</p>
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-              <div className="bg-muted/50 rounded-lg p-3">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-green-500" />
-                  <span className="text-sm font-medium">Steps</span>
+            <div className="grid grid-cols-2 gap-2 pt-3 border-t">
+              <div className="bg-muted/50 rounded-lg p-2.5">
+                <div className="flex items-center gap-1">
+                  <TrendingUp className="h-3.5 w-3.5 text-green-500" />
+                  <span className="text-xs font-medium">Steps</span>
                 </div>
-                <p className="text-2xl font-bold">{data.steps?.toLocaleString() || 0}</p>
-                <p className="text-xs text-muted-foreground">today</p>
+                <p className="text-lg font-bold truncate">{data.steps?.toLocaleString() || 0}</p>
+                <p className="text-[0.65rem] text-muted-foreground">today</p>
               </div>
               
-              <div className="bg-muted/50 rounded-lg p-3">
-                <div className="flex items-center gap-2">
-                  <DumbbellIcon className="h-4 w-4 text-blue-500" />
-                  <span className="text-sm font-medium">Calories</span>
+              <div className="bg-muted/50 rounded-lg p-2.5">
+                <div className="flex items-center gap-1">
+                  <DumbbellIcon className="h-3.5 w-3.5 text-blue-500" />
+                  <span className="text-xs font-medium">Calories</span>
                 </div>
-                <p className="text-2xl font-bold">{data.calories || 0}</p>
-                <p className="text-xs text-muted-foreground">burned</p>
+                <p className="text-lg font-bold truncate">{data.calories || 0}</p>
+                <p className="text-[0.65rem] text-muted-foreground">burned</p>
               </div>
             </div>
           </div>

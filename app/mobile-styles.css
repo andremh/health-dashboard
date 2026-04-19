@@ -1,0 +1,92 @@
+/* Mobile-specific optimizations for health dashboard */
+@layer components {
+  /* Optimized touch targets for mobile */
+  .mobile-touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+  
+  /* Compact card styles for mobile */
+  .mobile-card {
+    @apply p-3 space-y-2;
+  }
+  
+  /* Optimized progress bars for mobile */
+  .mobile-progress-bar {
+    @apply h-1.5 rounded-full overflow-hidden;
+  }
+  
+  /* Optimized typography for mobile */
+  .mobile-title {
+    @apply text-base font-semibold;
+  }
+  
+  .mobile-subtitle {
+    @apply text-xs font-medium text-muted-foreground;
+  }
+  
+  .mobile-value {
+    @apply text-lg font-bold;
+  }
+  
+  /* Optimized grid for mobile */
+  .mobile-grid {
+    @apply grid-cols-1 gap-3 p-3;
+  }
+  
+  .mobile-grid-2col {
+    @apply grid-cols-2 gap-2.5;
+  }
+  
+  /* Compact header styles */
+  .mobile-header {
+    @apply h-14 px-3;
+  }
+  
+  /* Optimized icon sizes for mobile */
+  .mobile-icon-sm {
+    @apply h-4 w-4;
+  }
+  
+  .mobile-icon-md {
+    @apply h-5 w-5;
+  }
+}
+
+/* Specific mobile overrides */
+@media (max-width: 640px) {
+  .dashboard-grid {
+    padding: 0.75rem !important; /* 12px instead of 16px */
+    gap: 0.75rem !important; /* 12px instead of 16px */
+  }
+  
+  .card-content {
+    padding: 0.75rem !important; /* Reduced padding */
+    gap: 0.75rem !important;
+  }
+  
+  .truncate-mobile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Adjust font sizes for better readability on small screens */
+  .text-display-mobile {
+    @apply text-lg;
+  }
+  
+  .text-body-mobile {
+    @apply text-sm;
+  }
+  
+  .text-caption-mobile {
+    @apply text-xs;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}

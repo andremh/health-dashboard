@@ -40,41 +40,41 @@ export function MindsetLogicCard() {
             <p>Loading...</p>
           </div>
         ) : data ? (
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <Eye className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium">Current State</p>
-                <p className="text-sm">{data.currentState}</p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-2">
+              <Eye className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-medium">Current State</p>
+                <p className="text-xs truncate">{data.currentState}</p>
               </div>
             </div>
             
-            <div className="flex items-start gap-3">
-              <MessageSquare className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium">Daily Insight</p>
-                <p className="text-sm">{data.dailyInsight}</p>
+            <div className="flex items-start gap-2">
+              <MessageSquare className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-medium">Daily Insight</p>
+                <p className="text-xs truncate">{data.dailyInsight}</p>
               </div>
             </div>
             
-            <div className="flex items-start gap-3">
-              <TrendingUp className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium">Emotional Control</p>
-                <p className="text-sm">{data.emotionalControlLevel}</p>
+            <div className="flex items-start gap-2">
+              <TrendingUp className="h-4 w-4 text-purple-500 mt-0.5 flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-medium">Emotional Control</p>
+                <p className="text-xs truncate">{data.emotionalControlLevel}</p>
               </div>
             </div>
             
-            <div className="mt-4 pt-4 border-t">
-              <p className="text-sm font-medium">Stress Level</p>
+            <div className="mt-3 pt-3 border-t">
+              <p className="text-xs font-medium">Stress Level</p>
               <div className="flex items-center gap-2 mt-1">
-                <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
+                <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-red-500" 
                     style={{ width: `${data.stressLevel}%` }}
                   ></div>
                 </div>
-                <span className="text-sm w-10">{data.stressLevel}%</span>
+                <span className="text-xs w-8">{data.stressLevel}%</span>
               </div>
             </div>
           </div>

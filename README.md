@@ -1,66 +1,225 @@
 # Health Dashboard
 
-Personal Health Dashboard for André Moura Henriques - A comprehensive system that monitors health metrics, supplements, and wellness data.
+Personal Health Dashboard for André — tracking physical metrics, recovery, and daily performance.
 
-## Features
+**Deploy:** [Vercel](#) | **Mobile:** ✅ Responsive | **Status:** 🟡 In Development
 
-- **Physical Tracking**: Visualize running and gym workouts with weekly volume dashboards
-- **Supplement Tracking**: Track supplement intake (30g Protein, 3g Creatina) with visual indicators
-- **Deep Work**: Monitor focus time vs recovery time with productivity scores
-- **Mindset Logic**: Space for factual insights and emotional control monitoring
-- **Health Metrics**: Real-time health indicators (HR, temperature, hydration, sleep)
-- **Training Volume**: Weekly training load progression tracking
+---
+
+## Status Atual
+
+### ✅ Funcional
+- Layout bento grid responsivo
+- Mobile-first com menu hamburger
+- Dark mode
+- Global refresh (invalida todas as queries)
+- 6 widgets base (UI)
+
+### ⚠️ Em Desenvolvimento
+- Google Fit API (OAuth configurado, sem scope fitness)
+- Fitbit API (sem dados)
+- Widgets com dados reais
+
+### ❌ Pendente
+- Deep Work integration
+- Supplement tracking backend
+- Training volume API
+- Mindset Logic metrics
+
+---
+
+## Preview
+
+> 📱 **Mobile-first:** Hamburger menu, header compacto, single column
+> 
+> 💻 **Desktop:** Sidebar completa, 3 colunas, header expandido
+
+---
 
 ## Tech Stack
 
-- **Frontend**: Next.js 14 (App Router) with TypeScript
-- **Styling**: Tailwind CSS with dark mode support
-- **State Management**: TanStack Query for API caching and state management
-- **UI Components**: Radix UI primitives with custom styling
-- **Icons**: Lucide React
+| Categoria | Tech |
+|-----------|------|
+| **Framework** | Next.js 14 (App Router) |
+| **Linguagem** | TypeScript |
+| **Styling** | Tailwind CSS |
+| **UI** | Radix UI + componentes custom |
+| **Icons** | Lucide React |
+| **State** | TanStack Query |
+| **Deploy** | Vercel |
 
-## Architecture
+---
 
-The application follows Clean Code principles and SOLID design patterns:
+## Arquitetura
 
-- Modular architecture allowing easy addition of new widgets/APIs
-- Service layer abstraction for API communication
-- Type-safe interfaces throughout the application
-- Bento Grid layout for optimal information density
-- Responsive design for all device sizes
+```
+health-dashboard/
+├── app/
+│   ├── page.tsx              # Dashboard principal
+│   ├── layout.tsx            # Root layout + providers
+│   ├── globals.css           # Tailwind + theme vars
+│   └── api/                  # API routes
+│       ├── activity/
+│       ├── sleep/
+│       ├── health/
+│       └── supplements/
+├── components/
+│   ├── dashboard/
+│   │   ├── header.tsx        # Desktop header
+│   │   ├── mobile-header.tsx # Mobile header + menu
+│   │   ├── sidebar.tsx       # Navegação lateral
+│   │   └── grid.tsx          # Bento grid layout
+│   ├── widgets/
+│   │   ├── physical-tracking-card.tsx
+│   │   ├── bio-fuel-card.tsx
+│   │   ├── deep-work-card.tsx
+│   │   ├── mindset-logic-card.tsx
+│   │   ├── health-metrics-card.tsx
+│   │   └── training-volume-card.tsx
+│   └── ui/
+│       ├── card.tsx
+│       ├── button.tsx
+│       └── ...
+├── hooks/
+│   └── use-*.ts              # React Query hooks
+├── services/
+│   └── *.ts                  # API service layer
+└── types/
+    └── *.ts                  # TypeScript types
+```
 
-## Getting Started
+---
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Copy environment variables: `cp .env.example .env.local`
-4. Configure your API keys in `.env.local`
-5. Run the development server: `npm run dev`
+## Começar
 
-## Global Refresh
+### Desenvolvimento Local
 
-The dashboard includes a Global Refresh button that invalidates all cached queries and forces refetch of all API data, ensuring you always see the most up-to-date information.
+```bash
+# 1. Instalar dependências
+npm install
+
+# 2. Copiar environment
+cp .env.example .env.local
+
+# 3. Configurar variáveis (ver abaixo)
+
+# 4. Rodar dev server
+npm run dev
+```
+
+Acessa: `http://localhost:3000`
+
+### Build
+
+```bash
+npm run build
+npm run start
+```
+
+---
 
 ## Environment Variables
 
-The application requires several API keys for different services:
+### Mínimo (UI apenas)
 
-- Health APIs (Fitbit, Apple Health, etc.)
-- Fitness APIs (Strava, MyFitnessPal, etc.)
-- Productivity APIs (RescueTime, Notion, Todoist, etc.)
-- Calendar APIs (Google Calendar, Outlook, etc.)
+```bash
+# Não requerido para demo UI
+```
 
-See `.env.example` for a complete list of required variables.
+### Produção (dados reais)
 
-## Deployment
+```bash
+# Google Fit
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REFRESH_TOKEN=
 
-The application is configured for deployment on Vercel. Simply connect your repository to Vercel and it will automatically build and deploy the application.
+# Fitbit
+FITBIT_CLIENT_ID=
+FITBIT_CLIENT_SECRET=
+FITBIT_ACCESS_TOKEN=
+FITBIT_REFRESH_TOKEN=
 
-## Customization
+# Opcional
+STRAVA_CLIENT_ID=
+NOTION_API_KEY=
+```
 
-The modular architecture allows for easy customization:
+Ver `.env.example` para lista completa.
 
-- Add new widgets by creating components in `/components/widgets`
-- Create new hooks in `/hooks` to fetch data
-- Define new types in `/types` to ensure type safety
-- Extend services in `/services` to integrate with new APIs
+---
+
+## Widgets
+
+| Widget | Dados | Status |
+|--------|-------|--------|
+| Physical Tracking | Google Fit / Fitbit | ⚠️ UI apenas |
+| Bio Fuel | Manual / MyFitnessPal | ⚠️ UI apenas |
+| Deep Work | RescueTime / Manual | ❌ Pendente |
+| Mindset Logic | Factual insights | ❌ Pendente |
+| Health Metrics | HR, temp, sono | ⚠️ UI apenas |
+| Training Volume | Strava / Manual | ❌ Pendente |
+
+---
+
+## Mobile
+
+Melhorias mobile implementadas (2026-04-13):
+
+- Menu hamburger com overlay
+- Header compacto ("Health" + "André")
+- Grid responsivo (1→2→3 colunas)
+- Padding/gap otimizados
+
+Ver `MOBILE_IMPROVEMENTS.md` para detalhes.
+
+---
+
+## Deploy (Vercel)
+
+```bash
+# 1. Instalar Vercel CLI
+npm i -g vercel
+
+# 2. Login
+vercel login
+
+# 3. Deploy
+vercel --prod
+```
+
+Ou conecta o repo no [vercel.com](https://vercel.com).
+
+---
+
+## Comandos Úteis
+
+```bash
+npm run dev          # Dev server
+npm run build        # Build produção
+npm run start        # Start produção
+npm run lint         # ESLint
+```
+
+---
+
+## Próximos Passos
+
+1. **Google Fit** — Adicionar scope fitness ao OAuth
+2. **Fitbit** — Configurar tokens
+3. **Widgets** — Conectar dados reais
+4. **Deep Work** — Integrar RescueTime ou tracking manual
+5. **Supplements** — Backend de tracking
+
+---
+
+## Links
+
+- **Mobile Improvements:** `MOBILE_IMPROVEMENTS.md`
+- **API Routes:** `/api/*`
+- **Vercel Dashboard:** [vercel.com](https://vercel.com)
+
+---
+
+**Última atualização:** 2026-04-14  
+**Versão:** 0.1.0

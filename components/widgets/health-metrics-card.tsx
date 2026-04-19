@@ -41,41 +41,41 @@ export function HealthMetricsCard() {
             <p>Loading...</p>
           </div>
         ) : healthData ? (
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-muted/50 rounded-lg p-3">
-              <div className="flex items-center gap-2 mb-2">
-                <HeartPulse className="h-4 w-4 text-red-500" />
-                <span className="text-sm font-medium">HR</span>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-muted/50 rounded-lg p-2.5">
+              <div className="flex items-center gap-1 mb-1">
+                <HeartPulse className="h-3.5 w-3.5 text-red-500" />
+                <span className="text-xs font-medium">HR</span>
               </div>
-              <p className="text-xl font-bold">{healthData.heartRate} bpm</p>
-              <p className="text-xs text-muted-foreground">resting</p>
+              <p className="text-lg font-bold">{healthData.heartRate}</p>
+              <p className="text-[0.65rem] text-muted-foreground">bpm</p>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-3">
-              <div className="flex items-center gap-2 mb-2">
-                <Thermometer className="h-4 w-4 text-orange-500" />
-                <span className="text-sm font-medium">Temp</span>
+            <div className="bg-muted/50 rounded-lg p-2.5">
+              <div className="flex items-center gap-1 mb-1">
+                <Thermometer className="h-3.5 w-3.5 text-orange-500" />
+                <span className="text-xs font-medium">Temp</span>
               </div>
-              <p className="text-xl font-bold">{healthData.temperature}°C</p>
-              <p className="text-xs text-muted-foreground">body</p>
+              <p className="text-lg font-bold">{healthData.temperature}</p>
+              <p className="text-[0.65rem] text-muted-foreground">°C</p>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-3">
-              <div className="flex items-center gap-2 mb-2">
-                <Droplets className="h-4 w-4 text-blue-500" />
-                <span className="text-sm font-medium">Hydration</span>
+            <div className="bg-muted/50 rounded-lg p-2.5">
+              <div className="flex items-center gap-1 mb-1">
+                <Droplets className="h-3.5 w-3.5 text-blue-500" />
+                <span className="text-xs font-medium">H2O</span>
               </div>
-              <p className="text-xl font-bold">{healthData.hydration}%</p>
-              <p className="text-xs text-muted-foreground">optimal</p>
+              <p className="text-lg font-bold">{healthData.hydration}%</p>
+              <p className="text-[0.65rem] text-muted-foreground">optimal</p>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-3">
-              <div className="flex items-center gap-2 mb-2">
-                <Moon className="h-4 w-4 text-indigo-500" />
-                <span className="text-sm font-medium">Sleep</span>
+            <div className="bg-muted/50 rounded-lg p-2.5">
+              <div className="flex items-center gap-1 mb-1">
+                <Moon className="h-3.5 w-3.5 text-indigo-500" />
+                <span className="text-xs font-medium">Sleep</span>
               </div>
-              <p className="text-xl font-bold">{sleepData?.duration || healthData.sleepHours}h</p>
-              <p className="text-xs text-muted-foreground">quality</p>
+              <p className="text-lg font-bold">{sleepData?.duration || healthData.sleepHours}h</p>
+              <p className="text-[0.65rem] text-muted-foreground">quality</p>
             </div>
           </div>
         ) : (

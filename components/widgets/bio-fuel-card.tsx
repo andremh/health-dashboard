@@ -43,14 +43,15 @@ export function BioFuelCard() {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="font-medium">Protein</span>
+                <span className="font-medium text-sm">Protein</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm">{data.proteinIntake}g / 30g</span>
+                <span className="text-sm">{data.proteinIntake}g</span>
+                <span className="text-xs text-muted-foreground">/ 30g</span>
                 {data.proteinIntake >= 30 ? (
-                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  <CheckCircle className="h-4 w-4 text-green-500" />
                 ) : (
-                  <XCircle className="h-5 w-5 text-red-500" />
+                  <XCircle className="h-4 w-4 text-red-500" />
                 )}
               </div>
             </div>
@@ -64,14 +65,15 @@ export function BioFuelCard() {
             
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="font-medium">Creatine</span>
+                <span className="font-medium text-sm">Creatine</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm">{data.creatineIntake}g / 3g</span>
+                <span className="text-sm">{data.creatineIntake}g</span>
+                <span className="text-xs text-muted-foreground">/ 3g</span>
                 {data.creatineIntake >= 3 ? (
-                  <CheckCircle className="h-5 w-5 text-green-500" />
+                  <CheckCircle className="h-4 w-4 text-green-500" />
                 ) : (
-                  <XCircle className="h-5 w-5 text-red-500" />
+                  <XCircle className="h-4 w-4 text-red-500" />
                 )}
               </div>
             </div>
@@ -84,8 +86,8 @@ export function BioFuelCard() {
             </div>
             
             <div className="mt-4 pt-4 border-t">
-              <p className="text-sm font-medium">Last Updated</p>
-              <p className="text-sm text-muted-foreground">{data.lastUpdated}</p>
+              <p className="text-xs font-medium">Last Updated</p>
+              <p className="text-xs text-muted-foreground truncate">{data.lastUpdated}</p>
             </div>
           </div>
         ) : (

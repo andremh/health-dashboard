@@ -40,36 +40,36 @@ export function TrainingVolumeCard() {
             <p>Loading...</p>
           </div>
         ) : data ? (
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-medium">This Week</span>
-              <span className="text-lg font-bold">{data.thisWeekVolume} units</span>
+              <span className="text-xs font-medium">This Week</span>
+              <span className="text-base font-bold">{data.thisWeekVolume}u</span>
             </div>
             
-            <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+            <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
               <div 
-                className="h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
+                className="h-1.5 bg-gradient-to-r from-blue-500 to-purple-500" 
                 style={{ width: `${Math.min(100, (data.thisWeekVolume / data.maxWeeklyVolume) * 100)}%` }}
               ></div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t">
+            <div className="grid grid-cols-2 gap-2 pt-3 border-t">
               <div>
                 <p className="text-xs text-muted-foreground">Last Week</p>
-                <p className="text-lg font-semibold">{data.lastWeekVolume} units</p>
+                <p className="text-sm font-semibold">{data.lastWeekVolume}u</p>
               </div>
               <div>
                 <p className="text-xs text-muted-foreground">Avg. Week</p>
-                <p className="text-lg font-semibold">{data.avgWeeklyVolume} units</p>
+                <p className="text-sm font-semibold">{data.avgWeeklyVolume}u</p>
               </div>
             </div>
             
-            <div className="flex items-center gap-2 mt-4">
-              <TrendingUp className="h-4 w-4 text-green-500" />
-              <span className="text-sm">
-                {data.volumeTrend === 'increasing' ? '↑ Increasing volume' : 
-                 data.volumeTrend === 'decreasing' ? '↓ Decreasing volume' : 
-                 '→ Stable volume'}
+            <div className="flex items-center gap-1.5 mt-3">
+              <TrendingUp className="h-3.5 w-3.5 text-green-500" />
+              <span className="text-xs">
+                {data.volumeTrend === 'increasing' ? '↑ Inc. vol.' : 
+                 data.volumeTrend === 'decreasing' ? '↓ Dec. vol.' : 
+                 '→ Stable vol.'}
               </span>
             </div>
           </div>
