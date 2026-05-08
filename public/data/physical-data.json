@@ -1,7 +1,7 @@
 {
   "lastWorkout": {
     "id": "1",
-    "date": "2026-05-08T23:10:55.309Z",
+    "date": "2026-05-08T23:15:19.325Z",
     "activityType": "CrossFit",
     "duration": 125,
     "distance": 0,
@@ -16,5 +16,5 @@
   "activeMinutes": 125,
   "date": "2026-05-08",
   "source": "Fitbit",
-  "fetchedAt": "2026-05-08T23:10:55.309Z"
+  "fetchedAt": "2026-05-08T23:15:19.325Z"
 }
