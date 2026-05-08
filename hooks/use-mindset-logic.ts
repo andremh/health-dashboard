@@ -1,31 +1,28 @@
 import { useQuery } from '@tanstack/react-query';
-import { MindsetInsight } from '@/types/mindset';
 
 interface MindsetLogicData {
   currentState: string;
   dailyInsight: string;
   emotionalControlLevel: string;
   stressLevel: number;
+  activityCount: number;
+  heartRateZones: Record<string, number>;
+  date: string;
+  source: string;
 }
 
 async function fetchMindsetLogic(): Promise<MindsetLogicData> {
-  // Simulate API call - replace with actual API endpoint
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        currentState: 'Focused and determined',
-        dailyInsight: 'Consistency in morning routine increases productivity',
-        emotionalControlLevel: 'High - Maintaining rational perspective',
-        stressLevel: 25,
-      });
-    }, 500);
-  });
+  const response = await fetch('/data/mindset-logic.json?' + Date.now());
+  if (!response.ok) {
+    throw new Error('Failed to fetch mindset logic data');
+  }
+  return await response.json();
 }
 
 export function useMindsetLogic() {
   return useQuery({
     queryKey: ['mindsetLogic'],
     queryFn: fetchMindsetLogic,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   });
 }

@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { FocusTime } from '@/types/productivity';
 
 interface DeepWorkData {
   focusTime: number;
@@ -7,27 +6,27 @@ interface DeepWorkData {
   focusPercentage: number;
   recoveryPercentage: number;
   productivityScore: number;
+  activities: Array<{
+    name: string;
+    duration: number;
+    calories: number;
+  }>;
+  date: string;
+  source: string;
 }
 
 async function fetchDeepWork(): Promise<DeepWorkData> {
-  // Simulate API call - replace with actual API endpoint
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        focusTime: 240,
-        recoveryTime: 180,
-        focusPercentage: 57,
-        recoveryPercentage: 43,
-        productivityScore: 85,
-      });
-    }, 500);
-  });
+  const response = await fetch('/data/deep-work.json?' + Date.now());
+  if (!response.ok) {
+    throw new Error('Failed to fetch deep work data');
+  }
+  return await response.json();
 }
 
 export function useDeepWork() {
   return useQuery({
     queryKey: ['deepWork'],
     queryFn: fetchDeepWork,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   });
 }

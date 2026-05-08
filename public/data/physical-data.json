@@ -1,13 +1,20 @@
 {
-  "lastWorkout": null,
-  "thisWeekWorkouts": 3,
+  "lastWorkout": {
+    "id": "1",
+    "date": "2026-05-08T23:10:55.309Z",
+    "activityType": "CrossFit",
+    "duration": 125,
+    "distance": 0,
+    "calories": 1018
+  },
+  "thisWeekWorkouts": 1,
   "runningDistance": 0,
-  "gymSessions": 3,
-  "steps": 2574,
-  "calories": 2081,
-  "distance": 1.8,
-  "activeMinutes": 21,
+  "gymSessions": 1,
+  "steps": 2584,
+  "calories": 2173,
+  "distance": 1.81,
+  "activeMinutes": 125,
   "date": "2026-05-08",
   "source": "Fitbit",
-  "fetchedAt": "2026-05-08T21:39:28.977Z"
+  "fetchedAt": "2026-05-08T23:10:55.309Z"
 }

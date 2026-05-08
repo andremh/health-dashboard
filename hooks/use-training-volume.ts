@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { TrainingVolume } from '@/types/training';
 
 interface TrainingVolumeData {
   thisWeekVolume: number;
@@ -7,27 +6,28 @@ interface TrainingVolumeData {
   avgWeeklyVolume: number;
   maxWeeklyVolume: number;
   volumeTrend: 'increasing' | 'decreasing' | 'stable';
+  activities: Array<{
+    name: string;
+    duration: number;
+    calories: number;
+  }>;
+  heartRateZones: Record<string, number>;
+  date: string;
+  source: string;
 }
 
 async function fetchTrainingVolume(): Promise<TrainingVolumeData> {
-  // Simulate API call - replace with actual API endpoint
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        thisWeekVolume: 1250,
-        lastWeekVolume: 1180,
-        avgWeeklyVolume: 1120,
-        maxWeeklyVolume: 1500,
-        volumeTrend: 'increasing',
-      });
-    }, 500);
-  });
+  const response = await fetch('/data/training-volume.json?' + Date.now());
+  if (!response.ok) {
+    throw new Error('Failed to fetch training volume data');
+  }
+  return await response.json();
 }
 
 export function useTrainingVolume() {
   return useQuery({
     queryKey: ['trainingVolume'],
     queryFn: fetchTrainingVolume,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   });
 }

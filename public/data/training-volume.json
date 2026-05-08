@@ -1,0 +1,22 @@
+{
+  "thisWeekVolume": 1018,
+  "lastWeekVolume": 916,
+  "avgWeeklyVolume": 967,
+  "maxWeeklyVolume": 1500,
+  "volumeTrend": "increasing",
+  "activities": [
+    {
+      "name": "CrossFit",
+      "duration": 125,
+      "calories": 1018
+    }
+  ],
+  "heartRateZones": {
+    "outOfRange": 1411,
+    "fatBurn": 23,
+    "cardio": 6
+  },
+  "date": "2026-05-08",
+  "source": "Fitbit",
+  "fetchedAt": "2026-05-08T23:10:55.310Z"
+}
