@@ -9,15 +9,14 @@ interface HealthMetricsResponse {
   calories: number;
   date: string;
   source: string;
+  fetchedAt?: string;
 }
 
 async function fetchHealthMetrics(): Promise<HealthMetricsResponse> {
-  // Chamada para a API real integrada com OpenClaw
-  const response = await fetch('/api/integration/health');
+  // Fetch static JSON generated during build
+  const response = await fetch('/data/health-data.json?' + Date.now());
   if (!response.ok) {
-    const errorData = await response.json();
-    console.error('API Error:', errorData);
-    throw new Error(errorData.error || 'Failed to fetch health metrics');
+    throw new Error('Failed to fetch health metrics');
   }
   return await response.json();
 }

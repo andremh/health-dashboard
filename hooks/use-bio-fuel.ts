@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { SupplementTracker } from '@/types/supplements';
 
 interface BioFuelResponse {
   proteinIntake: number;
@@ -9,8 +8,8 @@ interface BioFuelResponse {
 }
 
 async function fetchBioFuel(): Promise<BioFuelResponse> {
-  // Chamada para a API real
-  const response = await fetch('/api/supplements');
+  // Fetch static JSON generated during build
+  const response = await fetch('/data/biofuel-data.json?' + Date.now());
   if (!response.ok) {
     throw new Error('Failed to fetch bio fuel data');
   }
@@ -21,6 +20,6 @@ export function useBioFuel() {
   return useQuery({
     queryKey: ['bioFuel'],
     queryFn: fetchBioFuel,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   });
 }

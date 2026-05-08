@@ -1,0 +1,11 @@
+{
+  "heartRate": 52,
+  "temperature": 36.7,
+  "hydration": 85,
+  "sleepHours": 7.2,
+  "steps": 2574,
+  "calories": 2081,
+  "date": "2026-05-08",
+  "source": "Fitbit",
+  "fetchedAt": "2026-05-08T21:39:28.976Z"
+}

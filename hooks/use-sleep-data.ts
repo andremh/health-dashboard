@@ -5,11 +5,12 @@ interface SleepData {
   efficiency: number;
   quality: number;
   date: string;
+  source?: string;
 }
 
 async function fetchSleepData(): Promise<SleepData> {
-  // Chamada para a API real
-  const response = await fetch('/api/sleep');
+  // Fetch static JSON generated during build
+  const response = await fetch('/data/sleep-data.json?' + Date.now());
   if (!response.ok) {
     throw new Error('Failed to fetch sleep data');
   }
@@ -20,6 +21,7 @@ export function useSleepData() {
   return useQuery({
     queryKey: ['sleepData'],
     queryFn: fetchSleepData,
-    staleTime: 10 * 60 * 1000, // 10 minutes
+    staleTime: 5 * 60 * 1000,
+    retry: 1,
   });
 }
