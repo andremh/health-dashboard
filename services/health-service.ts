@@ -1,28 +1,31 @@
 import { HealthMetric } from '@/types/health';
-import { OpenClawIntegrationService } from './openclaw-integration';
+
+// API URL - usa NEXT_PUBLIC_ para estar disponível no browser
+const HEALTH_API_URL = process.env.NEXT_PUBLIC_HEALTH_API_URL || 'http://localhost:8080';
 
 class HealthService {
   async getLatestMetrics(): Promise<HealthMetric> {
     try {
-      // Try to get real data from OpenClaw integration
-      const data = await OpenClawIntegrationService.getHealthData();
-      const latest = data[0];
+      const response = await fetch(`${HEALTH_API_URL}/api/health/today`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      
+      const result = await response.json();
+      const data = result.data;
       
       return {
         id: 'current',
         timestamp: new Date().toISOString(),
-        heartRate: latest.resting_hr || 65,
+        heartRate: data.resting_hr || 65,
         temperature: 36.5,
         hydration: 2.5,
-        sleepHours: latest.duration_hours || 7,
-        steps: latest.steps || 0,
-        calories: latest.calories || 0,
-        date: latest.date,
-        source: latest.source,
+        sleepHours: 7, // Will be fetched separately
+        steps: data.steps || 0,
+        calories: data.calories || 0,
+        date: data.date,
+        source: data.source,
       };
     } catch (error) {
       console.error('Error fetching health metrics:', error);
-      // Return fallback data
       return {
         id: 'fallback',
         timestamp: new Date().toISOString(),
@@ -40,14 +43,17 @@ class HealthService {
 
   async getHistoricalMetrics(days: number = 7): Promise<HealthMetric[]> {
     try {
-      const data = await OpenClawIntegrationService.getHistoricalData(days);
-      return data.map((item, index) => ({
+      const response = await fetch(`${HEALTH_API_URL}/api/health/historical?days=${days}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      
+      const result = await response.json();
+      return result.data.map((item: any, index: number) => ({
         id: `hist-${index}`,
         timestamp: new Date(item.date).toISOString(),
         heartRate: item.resting_hr || 65,
         temperature: 36.5,
         hydration: 2.5,
-        sleepHours: item.duration_hours || 7,
+        sleepHours: 7,
         steps: item.steps || 0,
         calories: item.calories || 0,
         date: item.date,
