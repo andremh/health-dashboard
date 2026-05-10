@@ -5,7 +5,8 @@ import { usePhysicalTracking } from '@/hooks/use-physical-tracking';
 import { Activity, TrendingUp, Calendar } from 'lucide-react';
 
 export function PhysicalTrackingCard() {
-  const { data, isLoading, error } = usePhysicalTracking();
+  const { data, isLoading, error, isRefetching } = usePhysicalTracking();
+  const isRefreshing = isRefetching && !!data;
 
   if (error) {
     return (
@@ -33,7 +34,7 @@ export function PhysicalTrackingCard() {
         </CardTitle>
         <CardDescription>Your training activities and performance metrics</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className={`transition-opacity duration-300 ${isRefreshing ? 'opacity-70' : ''}`}>
         {isLoading ? (
           <div className="flex justify-center items-center h-32">
             <p>Loading...</p>

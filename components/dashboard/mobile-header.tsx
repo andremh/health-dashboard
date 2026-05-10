@@ -9,9 +9,10 @@ interface MobileHeaderProps {
   isLoading: boolean;
   onRefresh: () => void;
   onMenuToggle?: (isOpen: boolean) => void;
+  message?: { text: string; type: 'success' | 'error' } | null;
 }
 
-export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeaderProps) {
+export function MobileHeader({ isLoading, onRefresh, onMenuToggle, message }: MobileHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -60,15 +61,22 @@ export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeade
             </h1>
           </div>
         </div>
-        <Button
-          onClick={onRefresh}
-          variant="outline"
-          size="icon"
-          disabled={isLoading}
-          className="shrink-0 h-8 w-8 bg-gray-900/50 border-white/10"
-        >
-          <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
-        </Button>
+        <div className="flex items-center gap-2">
+          {message && (
+            <span className={`text-xs font-medium ${message.type === 'success' ? 'text-emerald-400' : 'text-red-400'}`}>
+              {message.text}
+            </span>
+          )}
+          <Button
+            onClick={onRefresh}
+            variant="outline"
+            size="icon"
+            disabled={isLoading}
+            className="shrink-0 h-8 w-8 bg-gray-900/50 border-white/10"
+          >
+            <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
+          </Button>
+        </div>
       </header>
 
       {/* Mobile Menu - overlay */}

@@ -5,7 +5,8 @@ import { useTrainingVolume } from '@/hooks/use-training-volume';
 import { Dumbbell, TrendingUp, Calendar } from 'lucide-react';
 
 export function TrainingVolumeCard() {
-  const { data, isLoading, error } = useTrainingVolume();
+  const { data, isLoading, error, isRefetching } = useTrainingVolume();
+  const isRefreshing = isRefetching && !!data;
 
   if (error) {
     return (
@@ -33,7 +34,7 @@ export function TrainingVolumeCard() {
         </CardTitle>
         <CardDescription>Weekly training load progression</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className={`transition-opacity duration-300 ${isRefreshing ? 'opacity-70' : ''}`}>
         {isLoading ? (
           <div className="flex justify-center items-center h-32">
             <p>Loading...</p>
