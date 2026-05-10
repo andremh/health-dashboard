@@ -26,6 +26,6 @@ export async function GET(request: NextRequest) {
     console.error('Activity API error:', error);
 
     // No fallback mock data allowed
-    return Response.json({ error: error.message || 'Failed to fetch' }, { status: 500 });
+    return Response.json({ error: error instanceof Error ? error.message : 'Failed to fetch' }, { status: 500 });
   }
 }
