@@ -1,7 +1,6 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { MindsetInsight } from '@/types/mindset';
 import { useMindsetLogic } from '@/hooks/use-mindset-logic';
 import { Brain, Eye, MessageSquare, TrendingUp } from 'lucide-react';
 

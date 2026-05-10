@@ -1,7 +1,6 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrainingVolume } from '@/types/training';
 import { useTrainingVolume } from '@/hooks/use-training-volume';
 import { Dumbbell, TrendingUp, Calendar } from 'lucide-react';
 

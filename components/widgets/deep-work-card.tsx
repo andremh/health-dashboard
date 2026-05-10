@@ -1,7 +1,6 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { FocusTime } from '@/types/productivity';
 import { useDeepWork } from '@/hooks/use-deep-work';
 import { Clock, Target, Activity } from 'lucide-react';
 

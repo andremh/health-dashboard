@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Activity, BarChart3, HeartPulse, Brain, Dumbbell, Coffee, Calendar, Settings, X } from 'lucide-react';
+import { Activity, BarChart3, HeartPulse, Brain, Dumbbell, Calendar, Settings, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -18,7 +18,6 @@ const navItems: NavItem[] = [
   { icon: HeartPulse, label: 'Health', href: '/health' },
   { icon: Brain, label: 'Mindset', href: '/mindset' },
   { icon: Dumbbell, label: 'Training', href: '/training' },
-  { icon: Coffee, label: 'Bio-Fuel', href: '/biofuel' },
   { icon: Calendar, label: 'Deep Work', href: '/deep-work' },
   { icon: Settings, label: 'Settings', href: '/settings' },
 ];
