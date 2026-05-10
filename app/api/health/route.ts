@@ -26,17 +26,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Health API error:', error);
 
-    // Fallback mock data
-    return Response.json({
-      heartRate: 62,
-      temperature: 36.6,
-      hydration: 80,
-      sleepHours: 7.0,
-      steps: 8000,
-      calories: 2000,
-      date,
-      source: 'fallback',
-      fetchedAt: new Date().toISOString(),
-    });
+    // No fallback mock data allowed
+    return Response.json({ error: error.message || 'Failed to fetch' }, { status: 500 });
   }
 }

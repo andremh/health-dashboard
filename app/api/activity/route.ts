@@ -25,15 +25,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Activity API error:', error);
 
-    // Fallback mock data
-    return Response.json({
-      steps: 8000,
-      calories: 2000,
-      distance: 6.2,
-      activeMinutes: 45,
-      date,
-      source: 'fallback',
-      fetchedAt: new Date().toISOString(),
-    });
+    // No fallback mock data allowed
+    return Response.json({ error: error.message || 'Failed to fetch' }, { status: 500 });
   }
 }

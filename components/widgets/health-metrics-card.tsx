@@ -82,6 +82,11 @@ export function HealthMetricsCard() {
         ) : (
           <p>No data available</p>
         )}
+        {healthData && (
+          <div className="mt-3 pt-3 border-t">
+            <p className="text-[0.65rem] text-muted-foreground uppercase tracking-wider">Source: {healthData.source || 'API'}</p>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

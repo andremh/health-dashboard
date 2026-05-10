@@ -76,6 +76,11 @@ export function TrainingVolumeCard() {
         ) : (
           <p>No data available</p>
         )}
+        {data && (
+          <div className="mt-3 pt-3 border-t">
+            <p className="text-[0.65rem] text-muted-foreground uppercase tracking-wider">Source: {data.source || 'API'}</p>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

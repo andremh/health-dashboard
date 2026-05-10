@@ -25,7 +25,7 @@ async function fetchTrainingVolume(): Promise<TrainingVolumeData> {
   const volume = activityData.calories || 1500;
 
   return {
-    thisWeekVolume: Math.round(volume * (0.8 + Math.random() * 0.4)),
+    thisWeekVolume: Math.round(volume),
     lastWeekVolume: Math.round(volume * 0.85),
     avgWeeklyVolume: Math.round(volume * 0.9),
     maxWeeklyVolume: Math.max(volume, 800),

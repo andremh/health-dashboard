@@ -22,13 +22,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Sleep API error:', error);
 
-    return Response.json({
-      duration: 7.0,
-      efficiency: 80,
-      quality: 7,
-      date,
-      source: 'fallback',
-      fetchedAt: new Date().toISOString(),
-    });
+    // No fallback mock data allowed
+    return Response.json({ error: error.message || 'Failed to fetch' }, { status: 500 });
   }
 }

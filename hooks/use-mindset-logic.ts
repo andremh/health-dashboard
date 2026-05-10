@@ -24,7 +24,7 @@ async function fetchMindsetLogic(): Promise<MindsetLogicData> {
       ? `Completed ${Math.round(activityData.activeMinutes)} minutes of activity today.`
       : 'Rest day. Focus on recovery and sleep quality.',
     emotionalControlLevel: hasWorkout ? 'High - Physical activity boosts mood' : 'Stable - Rest day',
-    stressLevel: hasWorkout ? 20 + Math.round(Math.random() * 10) : 35 + Math.round(Math.random() * 15),
+    stressLevel: hasWorkout ? 25 : 40,
     date: activityData.date,
     source: activityData.source,
   };
