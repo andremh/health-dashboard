@@ -5,7 +5,8 @@ import { useDeepWork } from '@/hooks/use-deep-work';
 import { Clock, Target, Activity } from 'lucide-react';
 
 export function DeepWorkCard() {
-  const { data, isLoading, error } = useDeepWork();
+  const { data, isLoading, error, isRefetching } = useDeepWork();
+  const isRefreshing = isRefetching && !!data;
 
   if (error) {
     return (
@@ -33,7 +34,7 @@ export function DeepWorkCard() {
         </CardTitle>
         <CardDescription>Focus time vs Recovery time today</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className={`transition-opacity duration-300 ${isRefreshing ? 'opacity-70' : ''}`}>
         {isLoading ? (
           <div className="flex justify-center items-center h-32">
             <p>Loading...</p>

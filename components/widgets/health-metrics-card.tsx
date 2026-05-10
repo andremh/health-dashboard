@@ -6,8 +6,9 @@ import { useHealthMetrics } from '@/hooks/use-health-metrics';
 import { useSleepData } from '@/hooks/use-sleep-data';
 
 export function HealthMetricsCard() {
-  const { data: healthData, isLoading: healthLoading, error: healthError } = useHealthMetrics();
-  const { data: sleepData, isLoading: sleepLoading, error: sleepError } = useSleepData();
+  const { data: healthData, isLoading: healthLoading, error: healthError, isRefetching: healthRefetching } = useHealthMetrics();
+  const { data: sleepData, isLoading: sleepLoading, error: sleepError, isRefetching: sleepRefetching } = useSleepData();
+  const isRefreshing = healthRefetching || sleepRefetching;
 
   if (healthError || sleepError) {
     return (
@@ -35,7 +36,7 @@ export function HealthMetricsCard() {
         </CardTitle>
         <CardDescription>Real-time health indicators</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className={isRefreshing ? 'opacity-70 transition-opacity duration-300' : ''}>
         {(healthLoading || sleepLoading) ? (
           <div className="flex justify-center items-center h-32">
             <p>Loading...</p>

@@ -5,7 +5,8 @@ import { useMindsetLogic } from '@/hooks/use-mindset-logic';
 import { Brain, Eye, MessageSquare, TrendingUp } from 'lucide-react';
 
 export function MindsetLogicCard() {
-  const { data, isLoading, error } = useMindsetLogic();
+  const { data, isLoading, error, isRefetching } = useMindsetLogic();
+  const isRefreshing = isRefetching && !!data;
 
   if (error) {
     return (
@@ -33,7 +34,7 @@ export function MindsetLogicCard() {
         </CardTitle>
         <CardDescription>Factual insights and emotional control</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className={`transition-opacity duration-300 ${isRefreshing ? 'opacity-70' : ''}`}>
         {isLoading ? (
           <div className="flex justify-center items-center h-32">
             <p>Loading...</p>
