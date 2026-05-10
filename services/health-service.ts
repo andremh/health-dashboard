@@ -1,7 +1,7 @@
 import { HealthMetric } from '@/types/health';
 
 // API URL - usa NEXT_PUBLIC_ para estar disponível no browser
-const HEALTH_API_URL = process.env.NEXT_PUBLIC_HEALTH_API_URL || 'http://localhost:8080';
+const HEALTH_API_URL = process.env.NEXT_PUBLIC_HEALTH_API_URL || 'http://100.99.18.59:8080';
 
 class HealthService {
   async getLatestMetrics(): Promise<HealthMetric> {

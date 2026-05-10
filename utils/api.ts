@@ -24,5 +24,5 @@ export async function apiCall<T>(endpoint: string, options?: RequestInit): Promi
 
 export function getApiBaseUrl(serviceName: string): string {
   const envVar = `NEXT_PUBLIC_${serviceName.toUpperCase()}_API_URL`;
-  return process.env[envVar] || `http://localhost:3000/api/${serviceName}`;
+  return process.env[envVar] || `http://100.99.18.59:3000/api/${serviceName}`;
 }

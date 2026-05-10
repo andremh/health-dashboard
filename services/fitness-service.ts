@@ -1,6 +1,6 @@
 import { RunningActivity, GymActivity } from '@/types/activities';
 
-const FITNESS_API_BASE_URL = process.env.FITNESS_API_BASE_URL || 'http://localhost:3002/api';
+const FITNESS_API_BASE_URL = process.env.FITNESS_API_BASE_URL || 'http://100.99.18.59:3002/api';
 
 class FitnessService {
   async getRecentActivities(limit: number = 10): Promise<(RunningActivity | GymActivity)[]> {

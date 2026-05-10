@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { RefreshCw, Menu, X } from 'lucide-react';
+import { RefreshCw, Menu, X, Command } from 'lucide-react';
 import { DashboardSidebar } from './sidebar';
 
 interface MobileHeaderProps {
@@ -37,23 +37,27 @@ export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeade
   return (
     <>
       {/* Mobile Header */}
-      <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b bg-background px-3 md:hidden">
-        <div className="flex items-center gap-2 flex-1">
+      <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b border-white/10 bg-gray-950/80 backdrop-blur-xl px-3 md:hidden">
+        <div className="flex items-center gap-3 flex-1">
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="h-9 w-9"
+            className="h-9 w-9 text-gray-400 hover:text-white hover:bg-white/10"
           >
             {isMenuOpen ? (
-              <X className="h-4 w-4" />
+              <X className="h-5 w-5" />
             ) : (
-              <Menu className="h-4 w-4" />
+              <Menu className="h-5 w-5" />
             )}
           </Button>
-          <div className="min-w-0 flex-1">
-            <h1 className="text-base font-semibold truncate">Health</h1>
-            <p className="text-xs text-muted-foreground truncate">André</p>
+          <div className="flex items-center gap-2">
+            <div className="flex h-6 w-6 items-center justify-center rounded bg-primary">
+              <Command className="h-3 w-3 text-primary-foreground" />
+            </div>
+            <h1 className="text-base font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent truncate">
+              Bio-OS
+            </h1>
           </div>
         </div>
         <Button
@@ -61,16 +65,16 @@ export function MobileHeader({ isLoading, onRefresh, onMenuToggle }: MobileHeade
           variant="outline"
           size="icon"
           disabled={isLoading}
-          className="shrink-0 h-9 w-9"
+          className="shrink-0 h-8 w-8 bg-gray-900/50 border-white/10"
         >
-          <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+          <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
         </Button>
       </header>
 
       {/* Mobile Menu - overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          <div className="fixed inset-0 bg-black/50" onClick={() => setIsMenuOpen(false)} />
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={() => setIsMenuOpen(false)} />
           <div className="fixed inset-y-0 left-0 z-50">
             <DashboardSidebar onClose={() => setIsMenuOpen(false)} isMobile={true} />
           </div>
