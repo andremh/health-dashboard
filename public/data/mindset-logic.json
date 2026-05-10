@@ -1,15 +1,11 @@
 {
-  "currentState": "Active and energized",
-  "dailyInsight": "Completed 1 workout(s) today. CrossFit for 125 minutes.",
-  "emotionalControlLevel": "High - Physical activity boosts mood",
-  "stressLevel": 20,
-  "activityCount": 1,
-  "heartRateZones": {
-    "outOfRange": 1411,
-    "fatBurn": 23,
-    "cardio": 6
-  },
-  "date": "2026-05-08",
-  "source": "Fitbit",
-  "fetchedAt": "2026-05-08T23:15:19.326Z"
+  "currentState": "Rest and recovery mode",
+  "dailyInsight": "Rest day. Focus on recovery and sleep quality.",
+  "emotionalControlLevel": "Stable - Rest day",
+  "stressLevel": 40,
+  "activityCount": 0,
+  "heartRateZones": {},
+  "date": "2026-05-10",
+  "source": "unknown",
+  "fetchedAt": "2026-05-10T14:12:30.511Z"
 }

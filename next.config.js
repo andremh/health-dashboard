@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-}
+  // Server-side rendering + API routes enabled for Vercel deployment
+  // Static export disabled to allow API routes to work
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

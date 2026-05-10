@@ -13,8 +13,7 @@ interface HealthMetricsResponse {
 }
 
 async function fetchHealthMetrics(): Promise<HealthMetricsResponse> {
-  // Fetch static JSON generated during build
-  const response = await fetch('/data/health-data.json?' + Date.now());
+  const response = await fetch('/api/health');
   if (!response.ok) {
     throw new Error('Failed to fetch health metrics');
   }
@@ -25,7 +24,7 @@ export function useHealthMetrics() {
   return useQuery({
     queryKey: ['healthMetrics'],
     queryFn: fetchHealthMetrics,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
     retry: 1,
   });
 }

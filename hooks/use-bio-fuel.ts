@@ -2,14 +2,15 @@ import { useQuery } from '@tanstack/react-query';
 
 interface BioFuelResponse {
   proteinIntake: number;
+  targetProtein?: number;
   creatineIntake: number;
+  targetCreatine?: number;
   lastUpdated: string;
   date: string;
 }
 
 async function fetchBioFuel(): Promise<BioFuelResponse> {
-  // Fetch static JSON generated during build
-  const response = await fetch('/data/biofuel-data.json?' + Date.now());
+  const response = await fetch('/api/supplements');
   if (!response.ok) {
     throw new Error('Failed to fetch bio fuel data');
   }

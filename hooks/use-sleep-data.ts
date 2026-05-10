@@ -9,8 +9,7 @@ interface SleepData {
 }
 
 async function fetchSleepData(): Promise<SleepData> {
-  // Fetch static JSON generated during build
-  const response = await fetch('/data/sleep-data.json?' + Date.now());
+  const response = await fetch('/api/sleep');
   if (!response.ok) {
     throw new Error('Failed to fetch sleep data');
   }

@@ -1,17 +1,11 @@
 {
-  "focusTime": 125,
-  "recoveryTime": 355,
-  "focusPercentage": 26,
-  "recoveryPercentage": 74,
-  "productivityScore": 85,
-  "activities": [
-    {
-      "name": "CrossFit",
-      "duration": 125,
-      "calories": 1018
-    }
-  ],
-  "date": "2026-05-08",
-  "source": "Fitbit",
-  "fetchedAt": "2026-05-08T23:15:19.326Z"
+  "focusTime": 0,
+  "recoveryTime": 480,
+  "focusPercentage": 0,
+  "recoveryPercentage": 100,
+  "productivityScore": 30,
+  "activities": [],
+  "date": "2026-05-10",
+  "source": "unknown",
+  "fetchedAt": "2026-05-10T14:12:30.511Z"
 }

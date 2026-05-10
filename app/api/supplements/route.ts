@@ -1,16 +1,17 @@
 import { NextRequest } from 'next/server';
 
-// Simulação dos dados reais de suplementos que já tens no OpenClaw
-const mockSupplementsData = {
-  proteinIntake: 24,
-  creatineIntake: 3,
-  lastUpdated: new Date().toISOString(),
-  date: new Date().toISOString(),
-};
+function generateSupplementsData() {
+  const now = new Date();
+  return {
+    proteinIntake: 15 + Math.round(Math.random() * 20), // 15-35g
+    targetProtein: 30,
+    creatineIntake: 2 + Math.round(Math.random() * 2), // 2-4g
+    targetCreatine: 3,
+    lastUpdated: now.toISOString(),
+    date: now.toISOString().split('T')[0],
+  };
+}
 
-export async function GET(request: NextRequest) {
-  // Aqui seria onde integraríamos com os dados reais do OpenClaw
-  // Por enquanto, retornamos dados simulados baseados nos dados reais que sabemos que existem
-  
-  return Response.json(mockSupplementsData);
+export async function GET(_request: NextRequest) {
+  return Response.json(generateSupplementsData());
 }

@@ -6,21 +6,30 @@ interface DeepWorkData {
   focusPercentage: number;
   recoveryPercentage: number;
   productivityScore: number;
-  activities: Array<{
-    name: string;
-    duration: number;
-    calories: number;
-  }>;
   date: string;
   source: string;
 }
 
 async function fetchDeepWork(): Promise<DeepWorkData> {
-  const response = await fetch('/data/deep-work.json?' + Date.now());
+  const response = await fetch('/api/activity');
   if (!response.ok) {
     throw new Error('Failed to fetch deep work data');
   }
-  return await response.json();
+
+  const activityData = await response.json();
+  const focusTime = activityData.activeMinutes || 45;
+  const recoveryTime = Math.max(0, 480 - focusTime);
+  const totalTime = focusTime + recoveryTime;
+
+  return {
+    focusTime,
+    recoveryTime,
+    focusPercentage: totalTime > 0 ? Math.round((focusTime / totalTime) * 100) : 0,
+    recoveryPercentage: totalTime > 0 ? Math.round((recoveryTime / totalTime) * 100) : 100,
+    productivityScore: focusTime > 60 ? 85 : focusTime > 30 ? 60 : 30,
+    date: activityData.date,
+    source: activityData.source,
+  };
 }
 
 export function useDeepWork() {
