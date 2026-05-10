@@ -12,15 +12,13 @@ export async function GET(request: NextRequest) {
     const fitbitData = await fetchFitbitActivity(date);
 
     return Response.json({
-      heartRate: fitbitData.restingHeartRate || 65,
-      temperature: 36.6,
-      hydration: 80,
+      heartRate: fitbitData.restingHeartRate,
       sleepHours: fitbitData.sleepHours,
       steps: fitbitData.steps,
       calories: fitbitData.calories,
       heartRateZones: fitbitData.heartRateZones || [],
       date,
-      source: 'Fitbit',
+      source: fitbitData.source || 'Fitbit',
       fetchedAt: new Date().toISOString(),
     });
   } catch (error) {

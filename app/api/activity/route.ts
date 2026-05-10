@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
       restingHeartRate: fitbitData.restingHeartRate,
       heartRateZones: fitbitData.heartRateZones || [],
       date,
-      source: 'Fitbit',
+      source: fitbitData.source || 'Fitbit',
       fetchedAt: new Date().toISOString(),
     });
   } catch (error) {

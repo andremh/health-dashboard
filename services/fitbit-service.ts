@@ -13,6 +13,7 @@ interface FitbitActivity {
   sleepHours: number;
   sleepEfficiency: number;
   weight?: number;
+  source?: string;
 }
 
 const VPS_GATEWAY_URL = process.env.VPS_GATEWAY_URL || "http://188.245.86.102:3001";
@@ -38,6 +39,7 @@ export async function fetchFitbitActivity(date: string): Promise<FitbitActivity>
       sleepHours: response.sleepHours?.value ?? 0,
       sleepEfficiency: response.sleepEfficiency?.value ?? 0,
       weight: response.weight?.value ?? undefined,
+      source: response.source,
     };
   } catch (error) {
     console.error('Error fetching health data from VPS gateway:', error);

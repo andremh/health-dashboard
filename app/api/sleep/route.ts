@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
       efficiency: fitbitData.sleepEfficiency,
       quality: fitbitData.sleepEfficiency > 0 ? Math.round(fitbitData.sleepEfficiency / 10) : 5,
       date,
-      source: 'Fitbit',
+      source: fitbitData.source || 'Fitbit',
       fetchedAt: new Date().toISOString(),
     });
   } catch (error) {

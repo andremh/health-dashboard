@@ -1,12 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
 interface HealthMetricsResponse {
-  heartRate: number;
-  temperature: number;
-  hydration: number;
-  sleepHours: number;
-  steps: number;
-  calories: number;
+  heartRate?: number;
+  sleepHours?: number;
+  steps?: number;
+  calories?: number;
   date: string;
   source: string;
   fetchedAt?: string;
