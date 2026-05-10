@@ -158,17 +158,18 @@ MOBILE_NAV.push(NAV_ITEMS[6]);
 
 /* ─── HOOK: useMetrics ──────────────────────────────────────── */
 
-function useMetrics(_source: string) {
+function useMetrics(source: string) {
   const [data, setData] = useState<MetricsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lastSync, setLastSync] = useState<string | null>(null);
 
   const fetchMetrics = useCallback(async () => {
+    const sp = source === 'Google Fit' ? 'google_fit' : source.toLowerCase();
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('/api/metrics');
+      const res = await fetch(`/api/metrics?source=${sp}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json: MetricsData = await res.json();
       setData(json);
@@ -178,7 +179,7 @@ function useMetrics(_source: string) {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [source]);
 
   useEffect(() => {
     fetchMetrics();

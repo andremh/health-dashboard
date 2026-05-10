@@ -5,11 +5,18 @@ function getDateParam(request: NextRequest): string {
   return request.nextUrl.searchParams.get('date') || new Date().toISOString().split('T')[0];
 }
 
+function getSourceParam(request: NextRequest): string | undefined {
+  const source = request.nextUrl.searchParams.get('source');
+  if (!source || source === 'all') return undefined;
+  return source;
+}
+
 export async function GET(request: NextRequest) {
   const date = getDateParam(request);
+  const source = getSourceParam(request);
 
   try {
-    const fitbitData = await fetchFitbitActivity(date);
+    const fitbitData = await fetchFitbitActivity(date, source);
 
     return Response.json({
       steps: fitbitData.steps,

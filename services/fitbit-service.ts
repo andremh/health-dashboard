@@ -19,9 +19,10 @@ interface FitbitActivity {
 const VPS_GATEWAY_URL = process.env.VPS_GATEWAY_URL || "http://188.245.86.102:3001";
 const VPS_API_KEY = process.env.VPS_API_KEY || "";
 
-export async function fetchFitbitActivity(date: string): Promise<FitbitActivity> {
+export async function fetchFitbitActivity(date: string, source?: string): Promise<FitbitActivity> {
   try {
-    const res = await fetch(`${VPS_GATEWAY_URL}/api/metrics?api_key=${VPS_API_KEY}&date=${date}`);
+    const url = `${VPS_GATEWAY_URL}/api/metrics?api_key=${VPS_API_KEY}&date=${date}${source ? `&source=${source}` : ''}`;
+    const res = await fetch(url);
 
     if (!res.ok) {
       throw new Error(`VPS gateway error: ${res.status} ${res.statusText}`);
